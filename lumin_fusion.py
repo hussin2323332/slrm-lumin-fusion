@@ -476,3 +476,4 @@ class LuminPipeline:
             'norm_type': self.normalizer.norm_type,
             'sort_input': self.sort_input,
         }
+

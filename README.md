@@ -2,7 +2,7 @@
 
 > Logical compression engine for high-dimensional regression using geometric sector decomposition.
 
-Lumin Fusion compresses datasets by partitioning normalized space into sectors, each governed by a local linear law `Y = W·X + B`. Instead of storing raw data or training a dense neural network, the engine retains only the minimal geometric description needed to reconstruct any point within a user-defined precision threshold (epsilon).
+Lumin Fusion compresses datasets by partitioning normalized space into sectors, each governed by a local linear law together forming a global piecewise-linear model `Y = W·X + B`. Instead of storing raw data or training a dense neural network, the engine retains only the minimal geometric description needed to reconstruct any point within a user-defined precision threshold (epsilon).
 
 ---
 
@@ -29,6 +29,11 @@ Raw Data → Normalize → Sort (optional) → Ingest → Sectors → Resolve �
 | `LuminResolution` | Inference engine. Resolves predictions from a pre-built sector array. Operates independently — does not need Origin at runtime. |
 | `LuminPipeline` | Main interface. Orchestrates normalization → ingestion → resolution. Handles save/load. |
 
+
+The design deliberately separates model construction (Origin) from model usage (Resolution), allowing lightweight inference without retraining.
+
+This approach enables compact, interpretable models that approximate complex functions without gradient training.
+
 ---
 
 ## Key Design Decisions
@@ -50,6 +55,8 @@ By default (`sort_input=True`), the engine sorts normalized data by Euclidean di
 
 In high dimensions, bounding boxes overlap extensively. When a point falls inside multiple sectors, the one with the smallest bounding box volume is selected. Degenerate sectors (near-zero range on any axis) are clamped to prevent numerical artifacts.
 
+These constraints ensure the engine behaves as a geometric compression system rather than a traditional black-box learner.
+
 ---
 
 ## Usage
@@ -70,14 +77,22 @@ pipeline = LuminPipeline(epsilon_val=0.05, epsilon_type='absolute', mode='divers
 pipeline.fit(data)
 print(f"Sectors generated: {pipeline.n_sectors}")
 
-# Predict
+# Predict on training data
 Y_pred = pipeline.predict(X)
 print(f"Max error: {np.max(np.abs(Y - Y_pred)):.6f}")
+
+# Predict on unseen data
+X_new = rng.uniform(-120, 120, (5, 10))
+Y_new_pred = pipeline.predict(X_new)
+print(Y_new_pred)
 
 # Save and load
 pipeline.save("model.npy")
 pipeline_loaded = LuminPipeline.load("model.npy")
+
+# Predict after loading
 Y_pred_loaded = pipeline_loaded.predict(X)
+print(f"Reloaded max error: {np.max(np.abs(Y - Y_pred_loaded)):.6f}")
 ```
 
 ---

